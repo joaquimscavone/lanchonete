@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="calcdiaria.php">
+        <label>
+            Quantidade de terças:
+            <select name="tercas" id="" required>
+                <option value="4">Quatro dias</option>
+                <option value="5">Cinco dias</option>
+            </select>
+        </label>
+        <label>
+            Quantidade de sextas:
+            <select name="sextas" id="" required>
+                <option value="4">Quatro dias</option>
+                <option value="5">Cinco dias</option>
+            </select>
+        </label>
+       
+        <label>
+            Valor da diária:
+            <input type="number" step="0.1" name="valor" value="120" required>
+        </label>
+       <button type="submit">Calcular</button>
+
+
+    </form>
+</body>
+
+</html>
