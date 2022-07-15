@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        label{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="calcfrete.php">
+        <label>
+            Nº de Dias:
+            <input type="number" name="qtdias" placeholder="Quantidade de dias" required>
+        </label>
+        <label>
+            Valor da diária:
+            <input type="number" step="0.1" name="vldia" value="200" required>
+        </label>
+        <label>
+            Qunatidade de KMs:
+            <input type="number" name="qtkm" placeholder="Quantidade de Kilometros" required>
+        </label>
+        <label>
+            Valor por KM:
+            <input type="number" step="0.1" name="vlkm" value="10" required>
+        </label>
+       <button type="submit">Calcular</button>
+
+
+    </form>
+</body>
+
+</html>
