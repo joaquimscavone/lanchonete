@@ -36,8 +36,8 @@ require_once "aplicacao.php";
                     <button type="submit">Adicionar</button>
 
                 </form>
-                <a href="cupom.php">[Imprimir Comanda]</a>
-                <a href="pagamento.php">[Registrar Pagamento]</a>
+                <a href="cupom.php?numero_mesa=<?=$x?>">[Imprimir Comanda]</a>
+                <a href="pagamento.php?numero_mesa=<?=$x?>">[Registrar Pagamento]</a>
                 <h2>Total: <span><?=convertReal($mesa['total'])?></span></h2>
             </div>
 

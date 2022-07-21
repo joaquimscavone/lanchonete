@@ -1,31 +1,8 @@
 <!DOCTYPE html>
 <?php
-	$lista = [
-		[
-			"descricao" => "Porção batata frita",
-			"tipo" => "Un",
-			"valor_un" => 12.50,
-			"quantidade" => 2,
-		],
-		[
-			"descricao" => "Porção peixe frito",
-			"tipo" => "Un",
-			"valor_un" => 35,
-			"quantidade" => 1,
-		],
-		[
-			"descricao" => "Coca cola 2lts",
-			"tipo" => "Un",
-			"valor_un" => 8,
-			"quantidade" => 1,
-		],
-		[
-			"descricao" => "Picole Kibom Master",
-			"tipo" => "Un",
-			"valor_un" => 10,
-			"quantidade" => 4,
-		]
-	];
+	require_once 'aplicacao.php';
+	$numero_mesa = $_GET['numero_mesa'];
+	$mesa = getMesa($numero_mesa);
 ?>
 <html lang="pt-br">
 
@@ -60,16 +37,13 @@
 
 		</tr>
 		<?php
-			$subtotal = 0; 
-			foreach($lista as &$item):
-			$item['subtotal']=$item['valor_un']*$item['quantidade'];	
-			$subtotal+=$item['subtotal'];
-		?>
+			foreach($mesa['itens'] as &$item):
+			?>
 			<tr>
-				<td><?php echo $item['descricao']?></td>
-				<td>R$<?= $item['valor_un']?></td>
+				<td><?php echo $item['descricao'];?></td>
+				<td><?= convertReal($item['valor_un'])?></td>
 				<td><?= $item['quantidade']?></td>
-				<td align="right">R$<?php echo $item['subtotal']?></td>
+				<td align="right"><?=convertReal($item['subtotal'])?></td>
 			</tr>
 		<?php endforeach;?>
 	</tbody>
@@ -81,19 +55,19 @@
 		</tr>
 		<tr class="ttu">
 			<td colspan="3">Sub-total</td>
-			<td align="right"><?=$subtotal?></td>
+			<td align="right"><?=convertReal($mesa['subtotal'])?></td>
 		</tr>
 		<tr class="ttu">
 			<td colspan="3">Taxa de serviço</td>
-			<td align="right"><?= ($taxa=$subtotal*0.1)?></td>
+			<td align="right"><?=convertReal($mesa['taxa'])?></td>
 		</tr>
 		<tr class="ttu">
 			<td colspan="3">Total</td>
-			<td align="right"><?=$subtotal+$taxa?></td>
+			<td align="right"><?=convertReal($mesa['total'])?></td>
 		</tr>
 		<tr class="sup">
 			<td colspan="4" align="center">
-				<b>Pedido:</b>
+				<b>Mesa: <?=$numero_mesa?></b>
 			</td>
 		</tr>
 		<tr class="sup">

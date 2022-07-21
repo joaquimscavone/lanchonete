@@ -1,6 +1,6 @@
 <?php
-define('NUMERO_MESAS',20);
-define('TAXA',0.1);
+define('NUMERO_MESAS',40);
+define('TAXA',0);
 $cardapio = [
     1=>[
         "descricao" => "Porção batata frita",
@@ -26,6 +26,11 @@ $cardapio = [
         "descricao" => "X-TUDO",
         "tipo" => "Un",
         "valor_un" => 18,
+    ],
+    [
+        "descricao" => "X-SALADA",
+        "tipo" => "Un",
+        "valor_un" => 9,
     ],
 
 ];
