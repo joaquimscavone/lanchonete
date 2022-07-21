@@ -86,3 +86,36 @@ tfoot .sup.p--0 td {
     background-color: pink;
 
 }
+
+.mesas{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.mesas>div,.mesas>div>form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.mesas>div>*,.mesas>div>form>*{
+    margin-bottom: 10px;
+}
+
+
+.mesas>div>h1, .mesas>div>h2>span{
+    color:gainsboro
+}
+
+.mesas>div.active>h1{
+    color:green;
+}
+.mesas>div.active>h2>span{
+    color:red;
+}
