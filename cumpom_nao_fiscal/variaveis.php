@@ -2,7 +2,7 @@
 define('NUMERO_MESAS',20);
 define('TAXA',0.1);
 $cardapio = [
-    [
+    1=>[
         "descricao" => "Porção batata frita",
         "tipo" => "Un",
         "valor_un" => 12.50,

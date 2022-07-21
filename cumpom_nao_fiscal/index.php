@@ -1,5 +1,5 @@
 <?php
-require "aplicacao.php";
+require_once "aplicacao.php";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,27 +15,8 @@ require "aplicacao.php";
     <pre>
     <?php
 
-    $mesa = [
-        'itens' =>  [
-            [
-                "descricao" => "Porção batata frita",
-                "tipo" => "Un",
-                "valor_un" => 12.50,
-                'quantidade' => 2,
-                'subtotal' => "valor_un*quantidade"
-            ], [
-                "descricao" => "Coca cola 2lts",
-                "tipo" => "Un",
-                "valor_un" => 8,
-                "quantidade" => 1,
-                'subtotal' => "valor_un*quantidade"
-            ]
-        ],
-        'subtotal' => 'soma do subtotal de todos os intes',
-        'taxa' => 'subtotal*taxa de serviço',
-        'total' => 'subtotal+taxa'
-    ];
-    print_r($mesa);
+        addPedido(15, 3,1);
+  
     ?>
 </body>
 </html>
