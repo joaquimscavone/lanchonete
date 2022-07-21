@@ -1,5 +1,6 @@
 <?php
 define('NUMERO_MESAS',20);
+define('TAXA',0.1);
 $cardapio = [
     [
         "descricao" => "Porção batata frita",

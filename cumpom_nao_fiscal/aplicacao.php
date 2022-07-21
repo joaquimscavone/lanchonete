@@ -2,9 +2,9 @@
 
 session_name("LANCHONETE");
 session_start();
+require_once "variaveis.php";
 
-
-if(!isset($_SESSION['messas'])){
+if(!isset($_SESSION['mesas'])){
     $_SESSION['mesas'] = [];
 }
 $mesas = &$_SESSION['mesas'];
