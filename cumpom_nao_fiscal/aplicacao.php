@@ -35,6 +35,7 @@ $mesas = &$_SESSION['mesas'];
     // ];
  */
 function addPedido($numero_mesa,$codigo_cardapio,$quantidade){
+        global $cardapio;
         $mesa = getMesa($numero_mesa);
         if(is_null($mesa)){
             $mesa = [
@@ -42,8 +43,18 @@ function addPedido($numero_mesa,$codigo_cardapio,$quantidade){
                 'subtotal' => 0,
             ];
         }
-        var_dump($mesa);
+        if(!isset($cardapio[$codigo_cardapio])){
+            erro("Código do produto inválido");
+        }
 
+        $item = $cardapio[$codigo_cardapio];
+        $item['quantidade'] = $quantidade;
+        $item['subtotal'] = $quantidade*$item['valor_un'];
+        $mesa['subtotal']+=$item['subtotal'];
+        $mesa['taxa'] = $mesa['subtotal']*TAXA;
+        $mesa['total'] = $mesa['subtotal']+$mesa['taxa'];
+        $mesa['itens'][] = $item;
+        $_SESSION['mesas'][$numero_mesa] = $mesa;
 }
 function getMesa($numero_mesa){
     global $mesas;
@@ -61,3 +72,17 @@ function erro($mensagem){
     die($mensagem);
 }
 
+
+
+function setMensagem($texto, $tipo="sucesso"){
+    $_SESSION['msg'] = ["texto" => $texto, "tipo" => $tipo];
+ }
+
+
+ function showMensagem(){
+    if(isset($_SESSION['msg'])){
+       [$texto,$tipo] = array_values($_SESSION['msg']);
+       echo "<div class='msg $tipo'> $texto </div>";
+       unset($_SESSION['msg']);
+    }
+ }
