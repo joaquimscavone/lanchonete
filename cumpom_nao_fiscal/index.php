@@ -18,24 +18,27 @@ require_once "aplicacao.php";
         showMensagem();
         $options = "";
         foreach($cardapio as $key => $item){
-            $options.="<option value='$key'>".$item['descricao']." - ".$item['valor_un']."</option>";
+            $options.="<option value='$key'>".$item['descricao']." - ".convertReal($item['valor_un'])."</option>";
         }
-        var_dump($options);
         echo '<div class="mesas">';
-        for ($x = 1; $x <= NUMERO_MESAS; $x++) : ?>
-
-            <div class="">
+        for ($x = 1; $x <= NUMERO_MESAS; $x++) : 
+            $mesa = getMesa($x);
+            $class = ($mesa['total']>0)?"active":"";
+            echo "<div class='$class'>";
+        ?>
                 <h1>Mesa <?= $x ?></h1>
                 <form action="add.php">
                     <select name="codigo_cardapio">
                         <?=$options?>
                     </select>
                     <input type="number" name="quantidade">
+                    <input type="hidden" name="numero_mesa" value="<?=$x?>">
                     <button type="submit">Adicionar</button>
+
                 </form>
                 <a href="cupom.php">[Imprimir Comanda]</a>
                 <a href="pagamento.php">[Registrar Pagamento]</a>
-                <h2>Total: <span>0</span></h2>
+                <h2>Total: <span><?=convertReal($mesa['total'])?></span></h2>
             </div>
 
         <?php endfor; ?>

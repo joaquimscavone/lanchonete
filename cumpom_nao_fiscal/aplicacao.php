@@ -36,17 +36,11 @@ $mesas = &$_SESSION['mesas'];
  */
 function addPedido($numero_mesa,$codigo_cardapio,$quantidade){
         global $cardapio;
-        $mesa = getMesa($numero_mesa);
-        if(is_null($mesa)){
-            $mesa = [
-                'itens' => [],
-                'subtotal' => 0,
-            ];
-        }
+       
         if(!isset($cardapio[$codigo_cardapio])){
             erro("Código do produto inválido");
         }
-
+        $mesa = getMesa($numero_mesa);
         $item = $cardapio[$codigo_cardapio];
         $item['quantidade'] = $quantidade;
         $item['subtotal'] = $quantidade*$item['valor_un'];
@@ -64,8 +58,16 @@ function getMesa($numero_mesa){
     }
     elseif(array_key_exists($numero_mesa,$mesas)){
         return $mesas[$numero_mesa];
+    }else{
+        $mesa = [
+            'itens' => [],
+            'subtotal' => 0,
+            'taxa' => 0,
+            'total' => 0,
+        ];
+        return $mesa;
     }
-    return null;
+   
 }
 
 function erro($mensagem){
@@ -85,4 +87,14 @@ function setMensagem($texto, $tipo="sucesso"){
        echo "<div class='msg $tipo'> $texto </div>";
        unset($_SESSION['msg']);
     }
+ }
+
+ function convertReal($numero){
+    return "R$ ".number_format($numero,2,',');
+ }
+
+
+ function redirect($pagina){
+    header("location:$pagina");
+    exit();
  }
